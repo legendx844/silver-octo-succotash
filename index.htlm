@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My GF?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+            background-color: #f0f8ff;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        .yes {
+            background-color: #32CD32;
+            color: white;
+        }
+        .no {
+            background-color: #FF6347;
+            color: white;
+        }
+        .like {
+            background-color: #FFD700;
+            color: white;
+        }
+        .quote {
+            font-size: 24px;
+            margin-top: 30px;
+            font-weight: bold;
+            color: #333;
+            display: none;
+        }
+        .like-message {
+            font-size: 18px;
+            color: #333;
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Will you be my girlfriend?</h1>
+
+    <div class="buttons">
+        <button class="no" id="noBtn">No</button>
+        <button class="yes" id="yesBtn">Yes</button>
+        <button class="like" id="likeBtn">Like</button>
+    </div>
+
+    <div class="quote" id="quote"></div>
+    <div class="like-message" id="likeMessage">Thank you for liking! 💖</div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const likeBtn = document.getElementById('likeBtn');
+        const quoteDiv = document.getElementById('quote');
+        const likeMessageDiv = document.getElementById('likeMessage');
+
+        let noQuotes = [
+            '“I’m not giving up, just waiting for you. 💘”',
+            '“It’s okay, I’ll keep waiting. 🕰️”',
+            '“The best things come to those who wait. 🌟”',
+            '“I’m always here for you, no rush. 💞”',
+            '“Patience is key, love. I’ll wait. ❤️”'
+        ];
+
+        let yesQuotes = [
+            '“Love is not about how many days, months, or years you’ve been together. Love is about how much you love each other every single day. 💖”',
+            '“When I look into your eyes, I see the future I want. 💕”',
+            '“Together is a wonderful place to be. 🌟”',
+            '“You complete me in every way. ❤️”',
+            '“You’re my favorite hello and hardest goodbye. 💞”'
+        ];
+
+        let noClickCount = 0;
+        let yesClickCount = 0;
+        let likeClickCount = 0;
+
+        noBtn.addEventListener('click', function() {
+            // Get a new quote from the array
+            const quote = noQuotes[noClickCount % noQuotes.length];
+            quoteDiv.innerHTML = quote;
+            quoteDiv.style.display = 'block';
+
+            // Grow the "No" button each time it's clicked
+            noBtn.style.transform = 'scale(1.5)';
+
+            // Increase click count and ensure it wraps around
+            noClickCount++;
+
+            // Grow the "Yes" button each time the "No" button is clicked
+            yesBtn.style.transform = `scale(${1.2 + (noClickCount * 0.1)})`;
+        });
+
+        yesBtn.addEventListener('click', function() {
+            // Get a new quote from the array
+            const quote = yesQuotes[yesClickCount % yesQuotes.length];
+            quoteDiv.innerHTML = quote;
+            quoteDiv.style.display = 'block';
+
+            // Grow the "Yes" button each time it's clicked
+            yesBtn.style.transform = 'scale(1.5)';
+
+            // Increase click count and ensure it wraps around
+            yesClickCount++;
+        });
+
+        likeBtn.addEventListener('click', function() {
+            // Show like message
+            likeMessageDiv.style.display = 'block';
+
+            // Grow the "Like" button each time it's clicked
+            likeBtn.style.transform = `scale(${1.2 + (likeClickCount * 0.1)})`;
+
+            // Increase click count for "Like"
+            likeClickCount++;
+        });
+    </script>
+
+</body>
+</html>
+            
